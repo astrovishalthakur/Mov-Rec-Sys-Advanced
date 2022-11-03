@@ -62,7 +62,13 @@
         </div>
 
         <div class="modal-body">
+          {%if details[1]=="https://image.tmdb.org/t/p/originalnull" %}
+            <img class="profile-pic" src="/static/no_person.png" alt="{{name}} - profile" style="width: 250px;height:400px;border-radius: 10px;" />
+              
+          {% else %}
           <img class="profile-pic" src="{{details[1]}}" alt="{{name}} - profile" style="width: 250px;height:400px;border-radius: 10px;" />
+              
+              {% endif %}
           <div style="margin-left: 20px">
             <p><strong>Birthday:</strong> {{details[2]}} </p>
             <p><strong>Place of Birth:</strong> {{details[3]}} </p>
@@ -92,7 +98,12 @@
         {% for name, details in casts.items() if not casts.hidden %}
           <div class="castcard card" style="width: 15rem;" title="Click to know more about {{name}}" data-toggle="modal" data-target="#{{details[0]}}">
             <div class="imghvr">
-              <img class="card-img-top cast-img" id="{{details[0]}}" height="360" width="240" alt="{{name}} - profile" src="{{details[2]}}">
+              {%if details[2]=="https://image.tmdb.org/t/p/originalnull" %}
+              <img class="card-img-top cast-img" id="{{details[0]}}" height="360" width="240" alt="{{name}} - profile" src="/static/no_person.png">
+              {% else %}
+                <img class="card-img-top cast-img" id="{{details[0]}}" height="360" width="240" alt="{{name}} - profile" src="{{details[2]}}">
+              
+              {% endif %}
               <figcaption class="fig">
                 <button class="card-btn btn btn-danger"> Know More </button>
               </figcaption>
