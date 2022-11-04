@@ -124,6 +124,9 @@ def recommend():
 
     cast_details = {cast_names[i]:[cast_ids[i], cast_profiles[i], cast_bdays[i], cast_places[i], cast_bios[i]] for i in range(len(cast_places))}
 
+    for i in casts.keys():
+        if i not in cast_details.keys():
+            cast_details[i]=[casts[i][0],casts[i][2],"unknown","unknown","unknown"]
     # web scraping to get user reviews from IMDB site
     sauce = urllib.request.urlopen('https://www.imdb.com/title/{}/reviews?ref_=tt_ov_rt'.format(imdb_id)).read()
     soup = bs.BeautifulSoup(sauce,'lxml')

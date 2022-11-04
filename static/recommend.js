@@ -48,7 +48,9 @@ function load_details(my_api_key,title){
         $('.fail').css('display','none');
         $('.results').delay(1000).css('display','block');
         var movie_id = movie.results[0].id;
-        var movie_title = movie.results[0].original_title;
+        // var movie_title = movie.results[0].original_title;
+        var movie_title = title;
+        // console.log(movie.results);
         movie_recs(movie_title,movie_id,my_api_key);
       }
     },
